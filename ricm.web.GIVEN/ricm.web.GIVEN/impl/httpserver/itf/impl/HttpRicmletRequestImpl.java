@@ -13,12 +13,14 @@ import httpserver.itf.HttpSession;
 
 public class HttpRicmletRequestImpl extends HttpRicmletRequest{
 	
-	protected HashMap<String, String> argments = new HashMap<String, String>();
-	protected HashMap<String, String> cookies = new HashMap<String, String>();
+	protected HashMap<String, String> argments;
+	protected HashMap<String, String> cookies;
 	protected Session session;
 	
 	public HttpRicmletRequestImpl(HttpServer hs, String method, String ressname, BufferedReader br) throws IOException {
 		super(hs, method, ressname, br);
+		argments = new HashMap<String, String>();
+		cookies = new HashMap<String, String>();
 		String line = br.readLine();
 		while(!(line.equals(""))) {
 			if (line.startsWith("Cookie:")) {

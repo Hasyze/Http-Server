@@ -9,13 +9,14 @@ import httpserver.itf.HttpSession;
 public class Session implements HttpSession{
 	private String id;
 	private HttpServer hs;
-	protected HashMap<String, Object> sessions = new HashMap<String, Object>();
+	protected HashMap<String, Object> sessions;
 	private Timer timer;
 	private TimerTask task;
 	
 	public Session(String id, HttpServer hs) { 
 		this.id= id;
 		this.hs = hs;
+		sessions = new HashMap<String, Object>();
 		Session sessionCourante = this;
 		task = new TimerTask() {
 			@Override

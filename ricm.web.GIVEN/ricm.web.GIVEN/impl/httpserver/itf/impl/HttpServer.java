@@ -34,8 +34,8 @@ public class HttpServer {
 	private File m_folder;  // default folder for accessing static resources (files)
 	private ServerSocket m_ssoc;
 	
-	private HashMap<String, HttpRicmlet> ricmletComp = new HashMap<String, HttpRicmlet>(); 
-	protected List<Session> sessionList = new ArrayList<Session>(); 
+	private HashMap<String, HttpRicmlet> ricmletComp; 
+	protected List<Session> sessionList; 
 
 	protected HttpServer(int port, String folderName) {
 		m_port = port;
@@ -45,6 +45,8 @@ public class HttpServer {
 		try {
 			m_ssoc=new ServerSocket(m_port);
 			System.out.println("HttpServer started on port " + m_port);
+			ricmletComp = new HashMap<String, HttpRicmlet>();
+			sessionList = new ArrayList<Session>();
 		} catch (IOException e) {
 			System.out.println("HttpServer Exception:" + e );
 			System.exit(1);

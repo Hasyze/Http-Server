@@ -17,12 +17,13 @@ public class HttpRicmletResponseImpl implements HttpRicmletResponse{
 	protected PrintStream m_ps;
 	protected HttpRicmletRequest m_req;
 	
-	protected HashMap<String, String> cookies = new HashMap<String, String>();
+	protected HashMap<String, String> cookies;
 
 	protected HttpRicmletResponseImpl(HttpServer hs, HttpRicmletRequest req, PrintStream ps) {
 		m_hs = hs;
 		m_req = req;
 		m_ps = ps;
+		cookies = new HashMap<String, String>();
 	}
 
 	public void setReplyOk() {
